@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
           className='w-8 h-8 mr-4 rounded-full'
           src="me.jpg"
         />
-        <p className='font-semibold'>Latest tweets</p>
+        <p className='font-semibold'>{Component.title}</p>
       </header>
 
       <main className='flex-1'>

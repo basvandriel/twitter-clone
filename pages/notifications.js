@@ -4,4 +4,6 @@ const Notifications = () => {
     return <p>Notification page</p>;
 }
 
+Notifications.title = "Notifications";
+
 export default Notifications;

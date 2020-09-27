@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default function Home() {
+function Home() {
   return (
     <div>
       <Head>
@@ -11,3 +11,7 @@ export default function Home() {
     </div>
   )
 }
+
+Home.title = 'Latest tweets';
+
+export default Home;

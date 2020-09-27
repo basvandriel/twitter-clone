@@ -13,7 +13,7 @@ const menu = [
         url: '/notifications', icon: BellIcon
     },
     {
-        url: 'messages', icon: MailboxIcon
+        url: '/messages', icon: MailboxIcon
     }
 ];
 
@@ -26,7 +26,7 @@ const Navigation = () => {
     return (
         <footer className='flex items-center border-t border-gray-200 text-gray-600'>
             {menu.map((item, index) => (
-                <Link href={item.url} >
+                <Link href={item.url} key={index}>
                     <a className={classNames + (router.pathname === item.url ? activeClassName : '')}>
                         <item.icon className='w-6 h-6' empty={router.pathname !== item.url} />
                     </a>
