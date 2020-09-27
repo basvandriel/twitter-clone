@@ -1,37 +1,39 @@
-import Link from './link';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { HomeIcon, SearchIcon, BellIcon, MailboxIcon } from '../components/icons';
 
+const menu = [
+    {
+        url: '/', icon: HomeIcon
+    },
+    {
+        url: '/explore', icon: SearchIcon
+    },
+    {
+        url: '/notifications', icon: BellIcon
+    },
+    {
+        url: 'messages', icon: MailboxIcon
+    }
+];
 
 const Navigation = () => {
+    const router = useRouter();
+
+    let classNames = 'flex justify-center w-1/4 py-4';
+    let activeClassName = ' text-purple-600';
+
     return (
         <footer className='flex items-center border-t border-gray-200 text-gray-600'>
-            <Link href='/'>
-                <a className='flex justify-center w-1/4 py-4'>
-                    <HomeIcon className='w-6 h-6' />
-                </a>
-            </Link>
-
-            <Link href='/explore'>
-                <a className='flex justify-center w-1/4 py-4'>
-                    <SearchIcon className='w-6 h-6' />
-                </a>
-            </Link>
-
-
-            <Link href='/notifications'>
-                <a className='flex justify-center w-1/4 py-4'>
-                    <BellIcon className='w-6 h-6' />
-                </a>
-            </Link>
-
-            <Link href='/messages'>
-                <a className='flex justify-center w-1/4 py-4'>
-                    <MailboxIcon className='w-6 h-6' />
-                </a>
-            </Link>
-
-        </footer>
+            {menu.map((item, index) => (
+                <Link href={item.url} >
+                    <a className={classNames + (router.pathname === item.url ? activeClassName : '')}>
+                        <item.icon className='w-6 h-6' empty={router.pathname !== item.url} />
+                    </a>
+                </Link>
+            ))}
+        </footer >
     );
-}
+};
 
 export default Navigation;
